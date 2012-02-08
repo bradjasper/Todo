@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "$@" | mail -s "$@" "bjasper@gmail.com"
+
+TODO=$@
+echo "$TODO" | mail -s "$TODO" "bjasper@gmail.com"
