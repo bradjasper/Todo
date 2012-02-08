@@ -1,8 +1,7 @@
 #!/bin/bash
 
 EMAIL=bjasper@gmail.com
-REMINDER=2days@followup.cc
-ARGS=$(getopt r "$@")
+ARGS=$(getopt r: "$@")
 
 eval set -- "$ARGS"
 
@@ -10,9 +9,12 @@ case $1 in
 
   # Reminder
   -r)
-    TODO=${@:3}
+    REMINDER=$2
+    TODO=${@:4}
+    FOLLOWUP_EMAIL="$REMINDER@followup.cc"
+
     echo "Added todo '$TODO' with reminder"
-    echo "$TODO" | mail -s "$TODO" -c $REMINDER $EMAIL
+    echo "$TODO" | mail -s "$TODO" -c $FOLLOWUP_EMAIL $EMAIL
     ;;
 
   # Regular
