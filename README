@@ -1,1 +1,16 @@
-Dead simple bash script to create a todo item by e-mailing it
+Simple bash script that sends an e-mail with whatever arguments you pass.
+
+This is a quick way to fire off todo items into your e-mail inbox.
+
+Pass an optional (-r) switch to add a reminder (currently 2 days via followup.cc)
+
+```bash
+bash>todo Pick up dry cleaning
+Added todo 'Pick up dry cleaning'
+
+bash>todo Clean car
+Added todo 'Clean car'
+
+bash>todo -r Get birthday present
+Added todo 'Get birthday present' with reminder
+```

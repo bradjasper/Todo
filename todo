@@ -1,4 +1,24 @@
 #!/bin/bash
 
-TODO=$@
-echo "$TODO" | mail -s "$TODO" "bjasper@gmail.com"
+EMAIL=bjasper@gmail.com
+REMINDER=2days@followup.cc
+ARGS=$(getopt r "$@")
+
+eval set -- "$ARGS"
+
+case $1 in
+
+  # Reminder
+  -r)
+    TODO=${@:3}
+    echo "Added todo '$TODO' with reminder"
+    echo "$TODO" | mail -s "$TODO" -c $REMINDER $EMAIL
+    ;;
+
+  # Regular
+  *)
+    TODO=${@:2}
+    echo "Added todo '$TODO'"
+    echo "$TODO" | mail -s "$TODO" $EMAIL
+    ;;
+esac
