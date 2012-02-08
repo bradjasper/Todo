@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$@" | mail -s "$@" "bjasper@gmail.com"
